@@ -133,7 +133,11 @@
     transitionSpeed: "fast",
     backgroundTransition: "fade",
     pdfSeparateFragments: false,
-    plugins: [RevealNotes, RevealSearch, RevealZoom]
+    chalkboard: {
+      storage: "ki-marketing-chalkboard",
+      theme: "chalkboard"
+    },
+    plugins: [RevealNotes, RevealSearch, RevealZoom, RevealChalkboard]
   });
 
   deck.initialize();
@@ -195,6 +199,24 @@
         searchPlugin.open();
       } else {
         showToast("Search is unavailable in this browser context.");
+      }
+    },
+    chalkboard: () => {
+      const chalkboardPlugin = deck.getPlugin("RevealChalkboard");
+      if (chalkboardPlugin?.toggleChalkboard) {
+        chalkboardPlugin.toggleChalkboard();
+        showToast("Chalkboard toggled. Draw with a mouse or touch; press Delete to clear.");
+      } else {
+        showToast("Chalkboard is unavailable in this browser context.");
+      }
+    },
+    "clear-drawings": () => {
+      const chalkboardPlugin = deck.getPlugin("RevealChalkboard");
+      if (chalkboardPlugin?.clear) {
+        chalkboardPlugin.clear();
+        showToast("Drawings cleared from the current slide.");
+      } else {
+        showToast("Chalkboard is unavailable in this browser context.");
       }
     },
     fullscreen: toggleFullscreen,
