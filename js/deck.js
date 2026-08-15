@@ -256,10 +256,5 @@
       setMenu(menu.hidden);
       return;
     }
-
-    if (key === "f" && !event.ctrlKey && !event.metaKey && !event.altKey) {
-      event.preventDefault();
-      toggleFullscreen();
-    }
   });
 })();
