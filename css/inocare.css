@@ -177,6 +177,28 @@ body {
   text-align: center;
 }
 
+/* Self-contained fallbacks for the Chalkboard plugin's three Font Awesome icons. */
+.palette i.fa,
+.boardhandle i.fas {
+  display: inline-block;
+  width: 1em;
+  font-style: normal;
+  line-height: 1;
+  text-align: center;
+}
+
+.palette .fa-square::before {
+  content: "\25A0";
+}
+
+.boardhandle .fa-chevron-up::before {
+  content: "\25B2";
+}
+
+.boardhandle .fa-chevron-down::before {
+  content: "\25BC";
+}
+
 .deck-toast {
   position: fixed;
   z-index: 110;
